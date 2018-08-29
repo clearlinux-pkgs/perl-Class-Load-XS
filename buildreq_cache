@@ -1,0 +1,9 @@
+0.10
+perl(Class::Load)
+perl(Data::OptList)
+perl(Module::Implementation)
+perl(Module::Runtime)
+perl(Params::Util)
+perl(Test::Fatal)
+perl(Test::Needs)
+perl(Try::Tiny)
