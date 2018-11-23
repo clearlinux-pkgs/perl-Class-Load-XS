@@ -4,7 +4,7 @@
 #
 Name     : perl-Class-Load-XS
 Version  : 0.10
-Release  : 4
+Release  : 5
 URL      : https://cpan.metacpan.org/authors/id/E/ET/ETHER/Class-Load-XS-0.10.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/E/ET/ETHER/Class-Load-XS-0.10.tar.gz
 Summary  : 'XS implementation of parts of Class::Load'
@@ -18,6 +18,7 @@ BuildRequires : perl(Data::OptList)
 BuildRequires : perl(Module::Implementation)
 BuildRequires : perl(Module::Runtime)
 BuildRequires : perl(Params::Util)
+BuildRequires : perl(Sub::Install)
 BuildRequires : perl(Test::Fatal)
 BuildRequires : perl(Test::Needs)
 BuildRequires : perl(Try::Tiny)
