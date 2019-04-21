@@ -4,10 +4,10 @@
 #
 Name     : perl-Class-Load-XS
 Version  : 0.10
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/E/ET/ETHER/Class-Load-XS-0.10.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/E/ET/ETHER/Class-Load-XS-0.10.tar.gz
-Summary  : 'XS implementation of parts of Class::Load'
+Summary  : XS implementation of parts of Class::Load
 Group    : Development/Tools
 License  : Artistic-2.0
 Requires: perl-Class-Load-XS-lib = %{version}-%{release}
@@ -33,6 +33,7 @@ Summary: dev components for the perl-Class-Load-XS package.
 Group: Development
 Requires: perl-Class-Load-XS-lib = %{version}-%{release}
 Provides: perl-Class-Load-XS-devel = %{version}-%{release}
+Requires: perl-Class-Load-XS = %{version}-%{release}
 
 %description dev
 dev components for the perl-Class-Load-XS package.
