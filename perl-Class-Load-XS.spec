@@ -4,14 +4,14 @@
 #
 Name     : perl-Class-Load-XS
 Version  : 0.10
-Release  : 12
+Release  : 13
 URL      : https://cpan.metacpan.org/authors/id/E/ET/ETHER/Class-Load-XS-0.10.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/E/ET/ETHER/Class-Load-XS-0.10.tar.gz
-Summary  : XS implementation of parts of Class::Load
+Summary  : 'XS implementation of parts of Class::Load'
 Group    : Development/Tools
 License  : Artistic-2.0
-Requires: perl-Class-Load-XS-lib = %{version}-%{release}
 Requires: perl-Class-Load-XS-license = %{version}-%{release}
+Requires: perl-Class-Load-XS-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Class::Load)
 BuildRequires : perl(Data::OptList)
@@ -31,21 +31,11 @@ XS implementation of parts of Class::Load
 %package dev
 Summary: dev components for the perl-Class-Load-XS package.
 Group: Development
-Requires: perl-Class-Load-XS-lib = %{version}-%{release}
 Provides: perl-Class-Load-XS-devel = %{version}-%{release}
 Requires: perl-Class-Load-XS = %{version}-%{release}
 
 %description dev
 dev components for the perl-Class-Load-XS package.
-
-
-%package lib
-Summary: lib components for the perl-Class-Load-XS package.
-Group: Libraries
-Requires: perl-Class-Load-XS-license = %{version}-%{release}
-
-%description lib
-lib components for the perl-Class-Load-XS package.
 
 
 %package license
@@ -56,14 +46,24 @@ Group: Default
 license components for the perl-Class-Load-XS package.
 
 
+%package perl
+Summary: perl components for the perl-Class-Load-XS package.
+Group: Default
+Requires: perl-Class-Load-XS = %{version}-%{release}
+
+%description perl
+perl components for the perl-Class-Load-XS package.
+
+
 %prep
 %setup -q -n Class-Load-XS-0.10
+cd %{_builddir}/Class-Load-XS-0.10
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -73,7 +73,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -82,7 +82,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Class-Load-XS
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-Class-Load-XS/LICENSE
+cp %{_builddir}/Class-Load-XS-0.10/LICENSE %{buildroot}/usr/share/package-licenses/perl-Class-Load-XS/c715d20265d2931c7564fc64abfdc4f8ff33e297
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -95,16 +95,16 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/Class/Load/XS.pm
 
 %files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/Class::Load::XS.3
 
-%files lib
-%defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/Class/Load/XS/XS.so
-
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Class-Load-XS/LICENSE
+/usr/share/package-licenses/perl-Class-Load-XS/c715d20265d2931c7564fc64abfdc4f8ff33e297
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/Class/Load/XS.pm
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/auto/Class/Load/XS/XS.so
