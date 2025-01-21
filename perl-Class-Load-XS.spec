@@ -7,7 +7,7 @@
 #
 Name     : perl-Class-Load-XS
 Version  : 0.10
-Release  : 29
+Release  : 30
 URL      : https://cpan.metacpan.org/authors/id/E/ET/ETHER/Class-Load-XS-0.10.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/E/ET/ETHER/Class-Load-XS-0.10.tar.gz
 Summary  : 'XS implementation of parts of Class::Load'
